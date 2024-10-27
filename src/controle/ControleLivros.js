@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Livro_js_1 = __importDefault(require("../modelo/Livro.js"));
-const livros = [
+var livros = [
     new Livro_js_1.default(0, 0, "Aprendendo TypeScript", "Um guia completo para TypeScript.", ["Autor A", "Autor B"]),
     new Livro_js_1.default(1, 1, "Dominando JavaScript", "Conceitos avançados em JavaScript.", ["Autor C"]),
     new Livro_js_1.default(2, 2, "Introdução ao Node.js", "Uma introdução prática ao Node.js.", ["Autor D", "Autor E"])
@@ -15,6 +15,12 @@ class ControleLivro {
         return livros;
     }
     static incluir(livro) {
-        const ;
+        const novaPosicaoFinal = livros.length;
+        livro.setCodigoLivro(novaPosicaoFinal);
+        livros.push(livro);
+    }
+    static excluir(codigo) {
+        const posicaoDoLivro = livros.findIndex((livro) => livro.getCodigoLivro() === codigo);
+        livros = livros.slice(posicaoDoLivro, posicaoDoLivro + 1);
     }
 }

@@ -14,12 +14,12 @@ class Livro {
     }
 
     // Getter para 'codigo'
-    public getCodigo(): number {
+    public getCodigoLivro(): number {
         return this.codigo;
     }
 
     // Setter para 'codigo'
-    public setCodigo(novoCodigo: number): void {
+    public setCodigoLivro(novoCodigo: number): void {
         this.codigo = novoCodigo;
     }
     

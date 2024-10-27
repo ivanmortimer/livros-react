@@ -14,8 +14,12 @@ class Livro {
         this.autores = autores;
     }
     // Getter para 'codigo'
-    getCodigo() {
+    getCodigoLivro() {
         return this.codigo;
+    }
+    // Setter para 'codigo'
+    setCodigoLivro(novoCodigo) {
+        this.codigo = novoCodigo;
     }
     // Getter para 'codEditora'
     getCodEditora() {
