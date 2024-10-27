@@ -1,4 +1,4 @@
-import Livro from "../modelo/Livro.js"
+import Livro from "../modelo/Livro"
 
 var livros: Array<Livro> = [
     new Livro(0, 0),
@@ -19,9 +19,9 @@ class ControleLivro {
         livros.push(livro);
     }
 
-    public static excluir(codigo: number): void {
-        const posicaoDoLivro = livros.findIndex((livro) => livro.codigo === codigo);
-        livros = livros.slice(posicaoDoLivro, posicaoDoLivro + 1);
+    public static excluir(codigoLivro: number): void {
+        const posicaoDoLivro = livros.findIndex((livro) => livro.codigo === codigoLivro);
+        livros.splice(posicaoDoLivro, 1);
     }
 }
 
@@ -30,3 +30,5 @@ ControleLivro.incluir(new Livro(3, 3));
 console.log(livros);
 ControleLivro.excluir(1);
 console.log(livros);
+
+export default ControleLivro

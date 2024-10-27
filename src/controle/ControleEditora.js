@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Editora_js_1 = __importDefault(require("../modelo/Editora.js"));
+const Editora_1 = __importDefault(require("../modelo/Editora"));
 var editoras = [
-    new Editora_js_1.default(0),
-    new Editora_js_1.default(1),
-    new Editora_js_1.default(2)
+    new Editora_1.default(0),
+    new Editora_1.default(1),
+    new Editora_1.default(2)
 ];
 class ControleEditora {
     // Métodos de acesso
@@ -22,3 +22,4 @@ class ControleEditora {
 }
 console.log(editoras);
 console.log(ControleEditora.getNomeEditora(1));
+exports.default = ControleEditora;

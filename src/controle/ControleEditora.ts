@@ -1,4 +1,4 @@
-import Editora from "../modelo/Editora.js"
+import Editora from "../modelo/Editora"
 
 var editoras: Array<Editora> = [
     new Editora(0),
@@ -23,3 +23,5 @@ class ControleEditora {
 
 console.log(editoras);
 console.log(ControleEditora.getNomeEditora(1));
+
+export default ControleEditora
