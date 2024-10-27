@@ -1,9 +1,9 @@
 import Editora from "../modelo/Editora.js"
 
 var editoras: Array<Editora> = [
-    new Editora(0, "Editora A"),
-    new Editora(1, "Editora B"),
-    new Editora(2, "Editora C")
+    new Editora(0),
+    new Editora(1),
+    new Editora(2)
 ];
 
 class ControleEditora {
@@ -14,11 +14,12 @@ class ControleEditora {
         return editoras;
     }
 
-    public static getNomeEditora(codEditora: number): string {
-        const novaListaEditoras: Array<Editora> = editoras.filter((editora) => editora.getCodEditora() === codEditora);
-        const nomeEditora: string = novaListaEditoras[0].getNomeEditora();
+    public static getNomeEditora(codigoEditora: number): string {
+        const novaListaEditoras: Array<Editora> = editoras.filter((editora) => editora.codEditora === codigoEditora);
+        const nomeEditora: string = novaListaEditoras[0].nome;
         return nomeEditora;
     }
 }
 
+console.log(editoras);
 console.log(ControleEditora.getNomeEditora(1));

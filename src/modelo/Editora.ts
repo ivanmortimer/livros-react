@@ -1,19 +1,9 @@
 class Editora {
-    private codEditora: number;
-    private nome: string;
+    public codEditora: number = 0;
+    public nome: string = "";
 
-    constructor(codEditora: number, nome: string) {
+    public constructor(codEditora: number) {
         this.codEditora = codEditora;
-        this.nome = nome;
-    }
-
-    // Métodos de acesso
-    public getCodEditora(): number {
-        return this.codEditora;
-    }
-
-    public getNomeEditora(): string {
-        return this.nome;
     }
 }
 
