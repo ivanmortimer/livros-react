@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import ControleLivro from "./controle/ControleLivros";
 import ControleEditora from "./controle/ControleEditora";
 
-var controleLivro = new ControleLivro;
-var controleEditora = new ControleEditora;
+var controleLivro = new ControleLivro();
+var controleEditora = new ControleEditora();
 
 function LinhaLivro(props) {
     var nomeEditora = controleEditora.getNomeEditora(props.livro.codEditora);
