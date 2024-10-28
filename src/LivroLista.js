@@ -14,7 +14,7 @@ function LinhaLivro(props) {
         <tr key={props.index.toString()}>
             <td key="titulo">
                 <p>{ props.livro.titulo }</p>
-                <button onClick={() => props.excluir(props.livro.codigo)}>Excluir</button>
+                <button type="button" className="btn btn-danger" onClick={() => props.excluir(props.livro.codigo)}>Excluir</button>
             </td>
             <td key="resumo">{ props.livro.resumo }</td>
             <td key="nomeEditora">{ nomeEditora }</td>
@@ -43,8 +43,20 @@ function LivroLista() {
     
     return (
         <main>
-            <h1>Catálogo de Livros</h1>
-            <table>{ livros.map((liv, ind) => <LinhaLivro livro={liv} excluir={excluir} index={ind} />) }</table>
+            <h1 className="text-start">Catálogo de Livros</h1>
+            <table className="table table-striped table-hover text-start">
+                <thead className="table table-dark table-hover">
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Resumo</th>
+                        <th scope="col">Editora</th>
+                        <th scope="col">Autores</th>
+                    </tr>
+                </thead>
+                <tbody className="table-group-divider">
+                    { livros.map((liv, ind) => <LinhaLivro livro={liv} excluir={excluir} index={ind} />) }
+                </tbody>
+            </table>
         </main>
     );
 
