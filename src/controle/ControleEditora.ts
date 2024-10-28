@@ -1,9 +1,9 @@
 import Editora from "../modelo/Editora"
 
 var editoras: Array<Editora> = [
-    new Editora(0),
-    new Editora(1),
-    new Editora(2)
+    new Editora(0, "Novatec Editora"),
+    new Editora(1, "Pearson"),
+    new Editora(2, "Elsevier")
 ];
 
 class ControleEditora {

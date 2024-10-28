@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Editora_1 = __importDefault(require("../modelo/Editora"));
 var editoras = [
-    new Editora_1.default(0),
-    new Editora_1.default(1),
-    new Editora_1.default(2)
+    new Editora_1.default(0, "Novatec Editora"),
+    new Editora_1.default(1, "Pearson"),
+    new Editora_1.default(2, "Elsevier")
 ];
 class ControleEditora {
     // Métodos de acesso

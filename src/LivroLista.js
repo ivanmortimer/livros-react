@@ -1,63 +1,53 @@
-import React, { useState, useEffect, setState } from 'react';
-import ReactDOM from 'react-dom/client';
-import Livro from "./modelo/Livro";
-import Editora from "./modelo/Editora";
+import { useState, useEffect } from 'react';
 import ControleLivro from "./controle/ControleLivros";
 import ControleEditora from "./controle/ControleEditora";
 
-class LivroLista extends React.Component {
+var controleLivro = new ControleLivro;
+var controleEditora = new ControleEditora;
 
-    controleLivro = new ControleLivro;
-    controleEditora = new ControleEditora;
+function LinhaLivro(props) {
+    var nomeEditora = controleEditora.getNomeEditora(props.livro.codEditora);
+    var listaAutores = props.livro.autores;
+    var listaAutoresHTML = listaAutores.map((autor, index) => <li key={index.toString()}>{autor}</li>);
 
-    constructor(props) {
-        super(props);
+    return (
+        <tr key={props.index.toString()}>
+            <td key="titulo">
+                <p>{ props.livro.titulo }</p>
+                <button onClick={() => props.excluir(props.livro.codigo)}>Excluir</button>
+            </td>
+            <td key="resumo">{ props.livro.resumo }</td>
+            <td key="nomeEditora">{ nomeEditora }</td>
+            <td key="listaAutoresHTML">
+                <ul>{ listaAutoresHTML }</ul>
+            </td>
+        </tr>
+    );
+}
 
-        this.state = {
-            livros: [],
-            carregado: useState(false)[0]
-        };
 
-        useEffect(() => {
-            setState({
-                livros: this.controleLivro.obterLivros(),
-                carregado: true
-            })
-        });
-    }
+function LivroLista() {
 
-    excluir = (codigoLivro) => {
-        this.controleLivro.excluir(codigoLivro);
-        setState({ carregado: false });
+    const [livros, setLivros] = useState([]);
+    const [carregado, setCarregado] = useState(false);
+
+    useEffect(() => {
+        setLivros( controleLivro.obterLivros() );
+        setCarregado( true );
+    });
+
+    const excluir = (codigoLivro) => {
+        controleLivro.excluir(codigoLivro);
+        setCarregado( false );
     };
     
-    LinhaLivro(livroLinha, index) {
-        var nomeEditora = controleEditora.getNomeEditora(livroLinha.codEditora);
-        var listaAutores = livroLinha.autores;
-        var listaAutoresHTML = listaAutores.map((autor, index) => <li key={index.toString()}>{autor}</li>);
-        return (
-            <tr key={index.toString()}>
-                <td>
-                    <p>{ livroLinha.titulo }</p>
-                    <button onClick={() => this.excluir(livroLinha.codigo)}>Excluir</button>
-                </td>
-                <td>{ livroLinha.resumo }</td>
-                <td>{ nomeEditora }</td>
-                <td>
-                    <ul>{ listaAutoresHTML }</ul>
-                </td>
-            </tr>
-        );
-    }
+    return (
+        <main>
+            <h1>Catálogo de Livros</h1>
+            <table>{ livros.map((liv, ind) => <LinhaLivro livro={liv} excluir={excluir} index={ind} />) }</table>
+        </main>
+    );
 
-    render() {
-        return (
-            <main>
-                <h1>Catálogo de Livros</h1>
-                <table>{ this.state.livros.map((livro, index) => this.LinhaLivro(livro, index)) }</table>
-            </main>
-        );
-    }
 }
 
 export default LivroLista

@@ -1,9 +1,10 @@
 class Editora {
-    public codEditora: number = 0;
-    public nome: string = "";
+    public codEditora: number;
+    public nome: string;
 
-    public constructor(codEditora: number) {
+    public constructor(codEditora: number, nome: string) {
         this.codEditora = codEditora;
+        this.nome = nome;
     }
 }
 
