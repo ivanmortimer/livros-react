@@ -7,12 +7,5 @@ class Editora {
         this.codEditora = codEditora;
         this.nome = nome;
     }
-    // Métodos de acesso
-    getCodEditora() {
-        return this.codEditora;
-    }
-    getNomeEditora() {
-        return this.nome;
-    }
 }
 exports.default = Editora;

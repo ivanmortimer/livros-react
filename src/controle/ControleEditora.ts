@@ -1,24 +1,27 @@
-import Editora from "../modelo/Editora.js"
+import Editora from "../modelo/Editora"
 
 var editoras: Array<Editora> = [
-    new Editora(0, "Editora A"),
-    new Editora(1, "Editora B"),
-    new Editora(2, "Editora C")
+    new Editora(0, "Novatec Editora"),
+    new Editora(1, "Pearson"),
+    new Editora(2, "Elsevier")
 ];
 
 class ControleEditora {
 
     // Métodos de acesso
 
-    public static getEditoras(): Array<Editora> {
+    public getEditoras(): Array<Editora> {
         return editoras;
     }
 
-    public static getNomeEditora(codEditora: number): string {
-        const novaListaEditoras: Array<Editora> = editoras.filter((editora) => editora.getCodEditora() === codEditora);
-        const nomeEditora: string = novaListaEditoras[0].getNomeEditora();
+    public getNomeEditora(codigoEditora: number): string {
+        const novaListaEditoras: Array<Editora> = editoras.filter((editora) => editora.codEditora === codigoEditora);
+        const nomeEditora: string = novaListaEditoras[0].nome;
         return nomeEditora;
     }
 }
 
-console.log(ControleEditora.getNomeEditora(1));
+// console.log(editoras);
+// console.log(ControleEditora.getNomeEditora(1));
+
+export default ControleEditora

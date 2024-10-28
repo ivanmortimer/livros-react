@@ -1,24 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import LivroLista from './LivroLista';
+import LivroDados from './LivroDados';
 import './App.css';
+import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <nav className="navbar bg-dark border-bottom border-body navbar-dark">
+          <div className="container-fluid">
+            <ul className="navbar-nav d-flex flex-row">
+              <li className="nav-item me-3">
+                <Link className="nav-link text-white" to="/">Catálogo</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/dados">Novo</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+        {/* Contêiner para centralizar o conteúdo */}
+        <div className="content-container">
+          <Routes>
+            <Route path="/" element={<LivroLista />} />
+            <Route path="/dados" element={<LivroDados />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
