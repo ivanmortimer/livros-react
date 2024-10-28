@@ -8,22 +8,26 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <nav className="navbar bg-dark border-bottom border-body navbar-dark navbar-text">
+        <nav className="navbar bg-dark border-bottom border-body navbar-dark">
           <div className="container-fluid">
             <ul className="navbar-nav d-flex flex-row">
-              <li className="nav-item me-3">  {/* Classe me-3 adiciona margem à direita */}
-                <Link className="nav-link text-white" to="/">Catálogo</Link> {/* text-white para cor branca */}
+              <li className="nav-item me-3">
+                <Link className="nav-link text-white" to="/">Catálogo</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/dados">Novo</Link> {/* text-white para cor branca */}
+                <Link className="nav-link text-white" to="/dados">Novo</Link>
               </li>
             </ul>
           </div>
         </nav>
-        <Routes>
-          <Route path="/" element={<LivroLista />} />
-          <Route path="/dados" element={<LivroDados />} />
-        </Routes>
+        
+        {/* Contêiner para centralizar o conteúdo */}
+        <div className="content-container">
+          <Routes>
+            <Route path="/" element={<LivroLista />} />
+            <Route path="/dados" element={<LivroDados />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
