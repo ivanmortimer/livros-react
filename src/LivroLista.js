@@ -1,3 +1,5 @@
+import React, { useState, useEffect, setState } from 'react';
+import ReactDOM from 'react-dom/client';
 import Livro from "./modelo/Livro";
 import Editora from "./modelo/Editora";
 import ControleLivro from "./controle/ControleLivros";
@@ -10,28 +12,50 @@ class LivroLista extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            livros: this.controleLivro.obterLivros(),
-            carregado: useState()
+            livros: [],
+            carregado: useState(false)[0]
         };
+
+        useEffect(() => {
+            setState({
+                livros: this.controleLivro.obterLivros(),
+                carregado: true
+            })
+        });
     }
 
-    LinhaLivro(props) {
-        var nomeEditora = controleEditora.getNomeEditora(props.codEditora);
-        var listaAutores = props.autores;
-        var listaLivrosHTML = listaAutores.map((autor, index) => <li key={index.toString()}>{autor}</li>);
+    excluir = (codigoLivro) => {
+        this.controleLivro.excluir(codigoLivro);
+        setState({ carregado: false });
+    };
+    
+    LinhaLivro(livroLinha, index) {
+        var nomeEditora = controleEditora.getNomeEditora(livroLinha.codEditora);
+        var listaAutores = livroLinha.autores;
+        var listaAutoresHTML = listaAutores.map((autor, index) => <li key={index.toString()}>{autor}</li>);
         return (
-            <tr>
+            <tr key={index.toString()}>
                 <td>
-                    <p>{ props.titulo }</p>
-                    <button onClick={this.controleLivro.excluir(props.codigo)}>Excluir</button>
+                    <p>{ livroLinha.titulo }</p>
+                    <button onClick={() => this.excluir(livroLinha.codigo)}>Excluir</button>
                 </td>
-                <td>{ props.resumo }</td>
+                <td>{ livroLinha.resumo }</td>
                 <td>{ nomeEditora }</td>
                 <td>
-                    <ul>{ listaLivrosHTML }</ul>
+                    <ul>{ listaAutoresHTML }</ul>
                 </td>
             </tr>
+        );
+    }
+
+    render() {
+        return (
+            <main>
+                <h1>Catálogo de Livros</h1>
+                <table>{ this.state.livros.map((livro, index) => this.LinhaLivro(livro, index)) }</table>
+            </main>
         );
     }
 }
