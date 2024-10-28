@@ -10,18 +10,18 @@ class ControleEditora {
 
     // Métodos de acesso
 
-    public static getEditoras(): Array<Editora> {
+    public getEditoras(): Array<Editora> {
         return editoras;
     }
 
-    public static getNomeEditora(codigoEditora: number): string {
+    public getNomeEditora(codigoEditora: number): string {
         const novaListaEditoras: Array<Editora> = editoras.filter((editora) => editora.codEditora === codigoEditora);
         const nomeEditora: string = novaListaEditoras[0].nome;
         return nomeEditora;
     }
 }
 
-console.log(editoras);
-console.log(ControleEditora.getNomeEditora(1));
+// console.log(editoras);
+// console.log(ControleEditora.getNomeEditora(1));
 
 export default ControleEditora

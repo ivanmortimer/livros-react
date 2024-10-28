@@ -11,22 +11,22 @@ var livros = [
 ];
 class ControleLivro {
     // Métodos de acesso
-    static obterLivros() {
+    obterLivros() {
         return livros;
     }
-    static incluir(livro) {
+    incluir(livro) {
         const novaPosicaoFinal = livros.length;
         livro.codigo = novaPosicaoFinal;
         livros.push(livro);
     }
-    static excluir(codigoLivro) {
+    excluir(codigoLivro) {
         const posicaoDoLivro = livros.findIndex((livro) => livro.codigo === codigoLivro);
         livros.splice(posicaoDoLivro, 1);
     }
 }
-console.log(livros);
-ControleLivro.incluir(new Livro_1.default(3, 3));
-console.log(livros);
-ControleLivro.excluir(1);
-console.log(livros);
+// console.log(livros);
+// ControleLivro.incluir(new Livro(3, 3));
+// console.log(livros);
+// ControleLivro.excluir(1);
+// console.log(livros);
 exports.default = ControleLivro;

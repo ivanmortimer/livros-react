@@ -11,15 +11,15 @@ var editoras = [
 ];
 class ControleEditora {
     // Métodos de acesso
-    static getEditoras() {
+    getEditoras() {
         return editoras;
     }
-    static getNomeEditora(codigoEditora) {
+    getNomeEditora(codigoEditora) {
         const novaListaEditoras = editoras.filter((editora) => editora.codEditora === codigoEditora);
         const nomeEditora = novaListaEditoras[0].nome;
         return nomeEditora;
     }
 }
-console.log(editoras);
-console.log(ControleEditora.getNomeEditora(1));
+// console.log(editoras);
+// console.log(ControleEditora.getNomeEditora(1));
 exports.default = ControleEditora;

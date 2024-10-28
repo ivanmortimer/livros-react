@@ -9,26 +9,26 @@ var livros: Array<Livro> = [
 class ControleLivro {
     // Métodos de acesso
 
-    public static obterLivros(): Array<Livro> {
+    public obterLivros(): Array<Livro> {
         return livros;
     }
 
-    public static incluir(livro: Livro): void {
+    public incluir(livro: Livro): void {
         const novaPosicaoFinal = livros.length;
         livro.codigo = novaPosicaoFinal;
         livros.push(livro);
     }
 
-    public static excluir(codigoLivro: number): void {
+    public excluir(codigoLivro: number): void {
         const posicaoDoLivro = livros.findIndex((livro) => livro.codigo === codigoLivro);
         livros.splice(posicaoDoLivro, 1);
     }
 }
 
-console.log(livros);
-ControleLivro.incluir(new Livro(3, 3));
-console.log(livros);
-ControleLivro.excluir(1);
-console.log(livros);
+// console.log(livros);
+// ControleLivro.incluir(new Livro(3, 3));
+// console.log(livros);
+// ControleLivro.excluir(1);
+// console.log(livros);
 
 export default ControleLivro
