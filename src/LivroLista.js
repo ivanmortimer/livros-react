@@ -32,9 +32,11 @@ function LivroLista() {
     const [carregado, setCarregado] = useState(false);
 
     useEffect(() => {
-        setLivros( controleLivro.obterLivros() );
-        setCarregado( true );
-    });
+        if (!carregado) {
+            setLivros( controleLivro.obterLivros() );
+            setCarregado( true );
+        }
+    }, [carregado]);
 
     const excluir = (codigoLivro) => {
         controleLivro.excluir(codigoLivro);
