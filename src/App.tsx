@@ -1,6 +1,6 @@
 import React from 'react';
 import LivroLista from './LivroLista';
-import LivroDados from './LivroDados';
+import LivroDados from './LivroDados.js';
 import './App.css';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 
